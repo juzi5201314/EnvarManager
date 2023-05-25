@@ -1,0 +1,37 @@
+name: 'publish'
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  publish-tauri:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@nightly
+      - name: install frontend dependencies
+        run: pnpm install
+      - run: cargo install tauri-cli
+      - run: cargo tauri build --target=x86_64-pc-windows-msvc -- -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort
+      - name: upload
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            src-tauri/target/x86_64-pc-windows-msvc/release/envar_manager.exe
+            src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/envar_manager*
