@@ -4,6 +4,8 @@ A tool for managing environment variables on Windows
 
 一个管理环境变量的工具
 
+[Download latest](https://github.com/juzi5201314/EnvarManager/releases/latest/download/envar_manager.exe)
+
 ![screenshots1.png](./assets/screenshots1.png)
 
 It can change existing environment variables (including whether to add to Path):
