@@ -34,7 +34,7 @@ jobs:
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: nightly-2023-05-24
+          toolchain: nightly
       - run: rustup component add rust-src --toolchain nightly-x86_64-pc-windows-msvc
       - name: install frontend dependencies
         run: pnpm install
