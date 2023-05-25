@@ -23,6 +23,7 @@ jobs:
           version: 8.5.1
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@nightly
+      - run: rustup component add rust-src --toolchain nightly-x86_64-pc-windows-msvc
       - name: install frontend dependencies
         run: pnpm install
       - run: cargo install tauri-cli
