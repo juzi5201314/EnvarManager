@@ -1,6 +1,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-#![feature(option_result_contains)]
-#![feature(once_cell)]
+#![feature(once_cell_try)]
 
 mod error;
 mod utils;
