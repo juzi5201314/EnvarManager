@@ -32,7 +32,9 @@ jobs:
         with:
           version: 8.5.1
       - name: install Rust stable
-        uses: dtolnay/rust-toolchain@nightly-2023-05-24
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: nightly-2023-05-24
       - run: rustup component add rust-src --toolchain nightly-x86_64-pc-windows-msvc
       - name: install frontend dependencies
         run: pnpm install
