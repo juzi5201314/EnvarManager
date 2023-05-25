@@ -19,6 +19,7 @@ fn git_commit_hash() -> String {
         .arg("rev-list")
         .arg("-1")
         .arg("HEAD")
+        .current_dir("../")
         .output()
     {
         if output.status.success() {
